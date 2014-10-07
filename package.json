@@ -1,0 +1,24 @@
+{
+  "author": {
+    "name": "Kyle Mitchell",
+    "email": "kyle@devcounsel.com",
+    "url": "http://devcounsel.com"
+  },
+  "bin": {
+    "fastmail-contactset": "./index.js"
+  },
+  "dependencies": {
+    "nightmare": "^1.1.0"
+  },
+  "description": "Programmatically overwrite your Fastmail address book",
+  "devDependencies": {
+    "coffee-script": "^1.8.0"
+  },
+  "license": "ISC",
+  "main": "index.js",
+  "name": "fastmail-contactset",
+  "scripts": {
+    "prepublish": "coffee -c index.coffee"
+  },
+  "version": "0.0.1-alpha-1"
+}
