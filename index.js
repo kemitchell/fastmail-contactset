@@ -24,14 +24,14 @@
   deleteContacts = function() {
     return function(nightmare) {
       console.log('Deleting existing contacts');
-      return nightmare.click('#navContacts a').wait(LONG_PAUSE).click('.itemsToDisplay a:last-child').wait(LONG_PAUSE).click('#checkAll').wait(SHORT_PAUSE).click('button[name="MSignal_AD-DA*"]').screenshot('screen2.png').wait();
+      return nightmare.click('#navContacts a').wait(LONG_PAUSE).click('.itemsToDisplay a:last-child').wait(LONG_PAUSE).click('#checkAll').wait(SHORT_PAUSE).click('button[name="MSignal_AD-DA*"]').wait();
     };
   };
 
   uploadContacts = function(file) {
     return function(nightmare) {
       console.log("Uploading contacts from " + file);
-      return nightmare.click('.actionImportExport').wait(LONG_PAUSE).upload('input[type=file]', file).screenshot('screen3.png').wait(SHORT_PAUSE).click('form#memail *[name="MSignal_UA-Upload*"]').screenshot('screen4.png').wait();
+      return nightmare.click('.actionImportExport').wait(LONG_PAUSE).upload('input[type=file]', file).wait(SHORT_PAUSE).click('form#memail *[name="MSignal_UA-Upload*"]').wait();
     };
   };
 

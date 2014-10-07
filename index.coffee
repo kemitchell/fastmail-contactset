@@ -1,3 +1,8 @@
+# TODO: Argument checking
+# TODO: Help message
+# TODO: Remove functionality to a module
+# TODO: Delete multiple pages of contacts
+
 Nightmare = require 'nightmare'
 
 EMAIL = process.argv[2]
@@ -16,6 +21,7 @@ login = (email, password) ->
     .wait()
     .type '#username', email
     .type '#password', password
+    # Access the simplified HTML interface
     .click '#use_html'
     .click '#loginSubmit'
     .wait()
@@ -30,10 +36,8 @@ deleteContacts = ->
     .click '.itemsToDisplay a:last-child'
     .wait LONG_PAUSE
     .click '#checkAll'
-    # .click '.contentTable input[type=checkbox]'
     .wait SHORT_PAUSE
     .click 'button[name="MSignal_AD-DA*"]'
-    .screenshot 'screen2.png'
     .wait()
 
 uploadContacts = (file) ->
@@ -43,16 +47,16 @@ uploadContacts = (file) ->
     .click '.actionImportExport'
     .wait LONG_PAUSE
     .upload 'input[type=file]', file
-    .screenshot 'screen3.png'
     .wait SHORT_PAUSE
     .click 'form#memail *[name="MSignal_UA-Upload*"]'
-    .screenshot 'screen4.png'
     .wait()
 
 new Nightmare()
+# Fastmail doesn't display a "select all" contacts checkbox for all user
+# agent strings.
 .useragent 'Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US) " +
   "AppleWebKit/528.8 (KHTML, like Gecko) Chrome/1.0.156.0 Safari/528.8'
 .use login(EMAIL, PASSWORD)
 .use deleteContacts()
-.use uploadContacts(FILE)
+.use uploadContacts FILE
 .run()
