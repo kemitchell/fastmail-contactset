@@ -56,7 +56,7 @@ new Nightmare()
 # agent strings.
 .useragent 'Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US) " +
   "AppleWebKit/528.8 (KHTML, like Gecko) Chrome/1.0.156.0 Safari/528.8'
-.use login(EMAIL, PASSWORD)
+.use login EMAIL, PASSWORD
 .use deleteContacts()
 .use uploadContacts FILE
 .run()
